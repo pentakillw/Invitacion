@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baby Shower de Dayana Ambar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #fdf2f8;
+            overflow-x: hidden;
+        }
+        .font-handwriting {
+            font-family: 'Great Vibes', cursive;
+        }
+        
+        /* --- ESTILOS DEL SOBRE --- */
+        #envelope-container {
+            transition: opacity 1s ease-out 1.5s;
+        }
+        #envelope {
+            transition: all 1s ease-in-out;
+            perspective: 1000px;
+        }
+        .envelope-back {
+            transform: rotateY(0deg);
+            transition: transform 1s ease-in-out;
+            transform-style: preserve-3d;
+            backface-visibility: hidden;
+        }
+        #envelope.open .envelope-back {
+            transform: rotateY(-180deg);
+        }
+        .seal {
+            position: relative;
+            overflow: hidden;
+        }
+        .seal::after {
+            content: '';
+            position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+            background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.5), transparent);
+            transform: rotate(45deg);
+            animation: sparkle 3s infinite linear;
+        }
+        @keyframes sparkle {
+            0% { transform: rotate(45deg) translateX(-150%); }
+            100% { transform: rotate(45deg) translateX(150%); }
+        }
+
+        /* --- ESTILOS DE LA INVITACIÓN --- */
+        #invitation-content {
+            display: none; /* Oculto al inicio */
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+        }
+        .hero {
+            background-image: linear-gradient(135deg, rgba(106, 27, 69, 0.4), rgba(181, 101, 142, 0.4)), url('https://images.pexels.com/photos/158771/forest-trail-trees-moss-158771.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            animation: ken-burns 20s ease-out infinite;
+        }
+        .card {
+            background-color: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            animation: pulse 8s ease-in-out infinite;
+        }
+        .card:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+            animation-play-state: paused;
+        }
+        .btn-magic {
+            background: linear-gradient(45deg, #f7b7d8, #e898c5);
+            transition: all 0.4s ease;
+            box-shadow: 0 4px 15px rgba(247, 183, 216, 0.5);
+            background-size: 200% auto;
+        }
+        .btn-magic:hover {
+            background-position: right center;
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(247, 183, 216, 0.7);
+        }
+        .countdown-item { 
+            background: rgba(255, 255, 255, 0.8); 
+            border: 1px solid #f7b7d8;
+        }
+        
+        .fade-in-section { opacity: 0; transform: translateY(40px); transition: opacity 1s ease-out, transform 1s ease-out; }
+        .fade-in-section.is-visible { opacity: 1; transform: translateY(0); }
+        
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.01); } 100% { transform: scale(1); } }
+        @keyframes ken-burns { 0% { background-size: 100% 100%; } 100% { background-size: 115% 115%; } }
+        #princess-name { animation: glow 3s ease-in-out infinite alternate; }
+        @keyframes glow {
+            from { text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #f7b7d8, 0 0 40px #f7b7d8; }
+            to { text-shadow: 0 0 20px #fff, 0 0 30px #e898c5, 0 0 40px #e898c5, 0 0 50px #e898c5; }
+        }
+        
+        .sparkle { position: absolute; width: 3px; height: 3px; background-color: white; border-radius: 50%; box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff; animation: sparkle-anim 5s linear infinite; }
+        @keyframes sparkle-anim { 0% { transform: translateY(0) scale(0.5); opacity: 1; } 100% { transform: translateY(-100vh) scale(1); opacity: 0; } }
+        
+        .timeline { position: relative; padding-left: 2rem; border-left: 2px solid #e898c5; }
+        .timeline-item { position: relative; padding-bottom: 3rem; }
+        .timeline-item:last-child { padding-bottom: 0; }
+        .timeline-item::before {
+            content: ''; position: absolute; left: -0.7rem; top: 0.3rem;
+            width: 20px; height: 20px; border-radius: 50%;
+            background-color: white; border: 4px solid #e898c5;
+        }
+        
+        .theme-color { color: #d47db3; }
+        .theme-color-dark { color: #c46aa2; }
+    </style>
+</head>
+<body class="text-gray-700">
+    
+    <!-- SOBRE INICIAL -->
+    <div id="envelope-container" class="fixed inset-0 flex items-center justify-center z-30 bg-pink-100">
+        <div id="envelope" class="relative w-[90vw] max-w-lg h-[60vw] max-h-[24rem] cursor-pointer" onclick="openEnvelope()">
+            <div class="envelope-back absolute w-full h-full bg-[#F8C8DC] rounded-lg shadow-2xl flex flex-col items-center justify-center text-center p-4">
+                <div class="absolute top-0 left-0 w-full h-1/2 bg-[#FADADD] rounded-t-lg" style="clip-path: polygon(0 0, 100% 0, 50% 100%);"></div>
+                <div class="seal w-16 h-16 bg-pink-500 rounded-full flex items-center justify-center shadow-lg">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-white" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
+                </div>
+                <p class="mt-4 text-lg font-semibold text-pink-700">Un decreto real ha llegado para ti</p>
+                <p class="text-pink-600">Haz clic en el sello para revelarlo</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- CONTENIDO DE LA INVITACIÓN -->
+    <div id="invitation-content">
+        <audio id="background-music" loop><source src="https://vgmsite.com/soundtracks/disney-s-sleeping-beauty/hlyycvrb/03-once-upon-a-dream.mp3" type="audio/mpeg"></audio>
+        <div id="music-modal" class="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4 z-50"><div class="bg-white rounded-2xl p-8 text-center max-w-sm shadow-2xl"><h3 class="font-handwriting text-4xl theme-color mb-3">¡Bienvenido!</h3><p class="mb-6">¿Quieres acompañar esta invitación con una melodía mágica?</p><div class="flex justify-center space-x-4"><button id="play-music-btn" class="btn-magic text-white font-bold py-2 px-8 rounded-full">Sí</button><button id="no-music-btn" class="bg-gray-300 text-gray-700 font-bold py-2 px-8 rounded-full hover:bg-gray-400 transition">No</button></div></div></div>
+        <button id="music-toggle" class="hidden fixed bottom-5 right-5 z-40 bg-white p-3 rounded-full shadow-lg"><svg id="music-on-icon" class="w-6 h-6 theme-color" fill="currentColor" viewBox="0 0 20 20"><path d="M18 3a1 1 0 00-1.447-.894L4 6.44V4a1 1 0 00-2 0v12a1 1 0 002 0v-2.44l12.553 3.346A1 1 0 0018 17V3zM4 8.23l12-3.2v9.94l-12-3.2V8.23z"/></svg><svg id="music-off-icon" class="w-6 h-6 text-gray-400 hidden" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM12.293 7.293a1 1 0 011.414 0L15 8.586l1.293-1.293a1 1 0 111.414 1.414L16.414 10l1.293 1.293a1 1 0 01-1.414 1.414L15 11.414l-1.293 1.293a1 1 0 01-1.414-1.414L13.586 10l-1.293-1.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg></button>
+        
+        <header class="hero text-white text-center py-20 px-6 min-h-screen flex flex-col items-center justify-center overflow-hidden">
+            <div id="sparkle-container"></div>
+            <div class="bg-black bg-opacity-50 p-6 md:p-8 rounded-2xl backdrop-filter backdrop-blur-sm z-10">
+                <h2 class="font-handwriting text-5xl md:text-7xl mb-4">Érase una vez un sueño...</h2>
+                <h1 id="princess-name" class="font-handwriting text-7xl md:text-9xl mb-4 text-white drop-shadow-lg">Dayana Ambar</h1>
+                <p class="text-lg md:text-xl mb-8 uppercase tracking-widest">Baby Shower</p>
+                <div id="countdown" class="flex justify-center space-x-2 md:space-x-4 text-gray-800">
+                    <div class="countdown-item flex flex-col justify-center items-center p-3 rounded-lg w-20 md:w-24"><span id="days" class="text-3xl md:text-4xl font-bold">00</span><span class="text-xs -mt-1">Días</span></div>
+                    <div class="countdown-item flex flex-col justify-center items-center p-3 rounded-lg w-20 md:w-24"><span id="hours" class="text-3xl md:text-4xl font-bold">00</span><span class="text-xs -mt-1">Horas</span></div>
+                    <div class="countdown-item flex flex-col justify-center items-center p-3 rounded-lg w-20 md:w-24"><span id="minutes" class="text-3xl md:text-4xl font-bold">00</span><span class="text-xs -mt-1">Minutos</span></div>
+                    <div class="countdown-item flex flex-col justify-center items-center p-3 rounded-lg w-20 md:w-24"><span id="seconds" class="text-3xl md:text-4xl font-bold">00</span><span class="text-xs -mt-1">Segundos</span></div>
+                </div>
+            </div>
+        </header>
+
+        <main class="container mx-auto px-6 py-16">
+            <section class="fade-in-section mb-20 text-center">
+                <div class="max-w-4xl mx-auto">
+                    <img src="https://placehold.co/150x150/f7b7d8/ffffff?text=Y+%26+J" alt="Foto de los padres" class="mx-auto rounded-full mb-6 border-4 border-white shadow-lg">
+                    <h2 class="font-handwriting text-5xl theme-color mb-4">Nuestro Cuento de Hadas</h2>
+                    <h3 class="text-2xl font-semibold mb-4">Un Sueño Hecho Realidad</h3>
+                    <p class="text-lg leading-relaxed">Con la bendición de las hadas buenas, nuestro más grande sueño se está haciendo realidad. Nos llena de alegría invitarte a celebrar la próxima llegada de nuestra amada princesa, Dayana Ambar.</p>
+                    <p class="mt-4 font-semibold theme-color-dark">Con amor, Yamileth Borralles Cobón & Juan Daniel Duarte Miranda</p>
+                </div>
+            </section>
+            
+            <section class="fade-in-section card rounded-2xl p-8 md:p-12 mb-20 shadow-xl">
+                <div class="text-center mb-10"><h2 class="font-handwriting text-5xl theme-color mb-2">Itinerario Mágico</h2><p class="text-lg">El plan para un día inolvidable.</p></div>
+                <div class="max-w-2xl mx-auto timeline">
+                    <div class="timeline-item"><p class="font-semibold text-lg flex items-center whitespace-nowrap"><svg class="w-5 h-5 inline-block mr-2 theme-color" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>4:00 PM</p><h3 class="text-xl font-bold theme-color-dark mt-1">Llegada al Castillo Encantado</h3><p>Los recibiremos con alegría para comenzar la celebración.</p></div>
+                    <div class="timeline-item"><p class="font-semibold text-lg flex items-center whitespace-nowrap"><svg class="w-5 h-5 inline-block mr-2 theme-color" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>5:00 PM</p><h3 class="text-xl font-bold theme-color-dark mt-1">Banquete Real</h3><p>Disfrutaremos de una deliciosa comida digna de la realeza.</p></div>
+                    <div class="timeline-item"><p class="font-semibold text-lg flex items-center whitespace-nowrap"><svg class="w-5 h-5 inline-block mr-2 theme-color" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>6:30 PM</p><h3 class="text-xl font-bold theme-color-dark mt-1">Juegos y Diversión</h3><p>¡Prepárate para reír y disfrutar con actividades y sorpresas!</p></div>
+                    <div class="timeline-item"><p class="font-semibold text-lg flex items-center whitespace-nowrap"><svg class="w-5 h-5 inline-block mr-2 theme-color" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>7:30 PM</p><h3 class="text-xl font-bold theme-color-dark mt-1">Apertura de Regalos</h3><p>Compartiremos la emoción de abrir los tesoros para nuestra princesa.</p></div>
+                </div>
+            </section>
+
+            <section class="fade-in-section card rounded-2xl p-8 md:p-12 mb-20 shadow-xl">
+                <div class="text-center mb-8"><h2 class="font-handwriting text-5xl theme-color mb-2">La Celebración Real</h2><p class="text-lg">Los datos para no perderte el encanto.</p></div>
+                <div class="grid md:grid-cols-3 gap-8 text-center">
+                    <div class="flex flex-col items-center"><svg class="w-12 h-12 theme-color mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg><h3 class="font-semibold text-xl mb-1">Fecha</h3><p>Sábado, 25 de Octubre, 2025</p></div>
+                    <div class="flex flex-col items-center"><svg class="w-12 h-12 theme-color mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg><h3 class="font-semibold text-xl mb-1">Hora</h3><p>4:00 PM</p></div>
+                    <div class="flex flex-col items-center"><svg class="w-12 h-12 theme-color mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg><h3 class="font-semibold text-xl mb-1">Lugar</h3><p>Calz. de Guadalupe #502, Col. El Cerrito, Cuautitlán.</p></div>
+                </div>
+                <div class="mt-8 rounded-lg overflow-hidden h-64 md:h-80 shadow-md">
+                    <a href="https://www.google.com/maps/search/?api=1&query=Calz+de+guadalupe+502,+Cuautitlan+el+cerrito" target="_blank" rel="noopener noreferrer" class="h-full w-full bg-pink-200 flex items-center justify-center text-3xl font-handwriting text-white hover:bg-pink-300 transition-colors">Ver Mapa del Reino</a>
+                </div>
+            </section>
+            
+            <section class="fade-in-section text-center mb-20">
+                <h2 class="font-handwriting text-5xl theme-color mb-4">Dones de las Hadas</h2>
+                <p class="max-w-2xl mx-auto text-lg mb-8">Tu presencia es el mejor don. Si además deseas obsequiar algo a nuestra princesa, te compartimos que la mesa de regalos está en Liverpool.</p>
+                <div class="flex justify-center">
+                    <a href="https://www.liverpool.com.mx/tienda/mesa-de-regalos" target="_blank" class="btn-magic text-white font-bold py-3 px-8 rounded-full text-lg shadow-lg">Ver Mesa de Regalos</a>
+                </div>
+            </section>
+
+            <!-- RSVP -->
+            <section class="fade-in-section card rounded-2xl p-8 md:p-12 shadow-xl">
+                <div class="text-center mb-8"><h2 class="font-handwriting text-5xl theme-color mb-2">Confirma tu Asistencia</h2><p class="text-lg">El heraldo real espera tu respuesta antes del 15 de Octubre.</p></div>
+                <!-- Asegúrate de que esta URL sea la correcta de tu dashboard de Formspark -->
+                <form id="rsvpForm" action="https://submit-form.com/D2vQ5ZvyN" method="POST" class="max-w-xl mx-auto">
+                    <div class="mb-4"><label for="name" class="block mb-2 font-semibold">Nombre del Invitado</label><input type="text" id="name" name="name" class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pink-400" required></div>
+                    <div class="mb-6"><label class="block mb-2 font-semibold">¿Nos acompañarás?</label><div class="flex space-x-4"><label class="flex items-center"><input type="radio" name="attendance" value="Si, allí estaré" class="mr-2"> Sí, allí estaré</label><label class="flex items-center"><input type="radio" name="attendance" value="No podré asistir" class="mr-2"> No podré asistir</label></div></div>
+                    <div class="text-center"><button type="submit" class="btn-magic text-white font-bold py-3 px-12 rounded-full text-lg">Enviar Confirmación</button></div>
+                </form>
+            </section>
+
+        </main>
+
+        <footer class="text-center py-10 bg-gray-100 mt-16"><p class="font-handwriting text-4xl theme-color-dark">#ElSueñoDeDayana</p><p class="mt-2">Gracias por ser parte de nuestro "Felices para Siempre".</p></footer>
+    </div>
+    
+    <script>
+        function openEnvelope() {
+            const envelope = document.getElementById('envelope');
+            const envelopeContainer = document.getElementById('envelope-container');
+            const invitationContent = document.getElementById('invitation-content');
+            if (envelope.classList.contains('open')) return;
+            envelope.classList.add('open');
+            setTimeout(() => {
+                envelopeContainer.style.opacity = '0';
+                invitationContent.style.display = 'block';
+                setTimeout(() => {
+                    envelopeContainer.style.display = 'none';
+                    invitationContent.style.opacity = '1';
+                    document.body.style.overflow = 'auto';
+                }, 500);
+            }, 1000);
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const countdown = () => {
+                const countDate = new Date('October 25, 2025 16:00:00').getTime();
+                const now = new Date().getTime();
+                const gap = countDate - now;
+                if (gap < 0) {
+                    document.getElementById('countdown').innerHTML = '<p class="text-2xl font-bold">¡El gran día ha llegado!</p>';
+                    return;
+                }
+                const second = 1000, minute = second * 60, hour = minute * 60, day = hour * 24;
+                document.getElementById('days').innerText = Math.floor(gap / day).toString().padStart(2, '0');
+                document.getElementById('hours').innerText = Math.floor((gap % day) / hour).toString().padStart(2, '0');
+                document.getElementById('minutes').innerText = Math.floor((gap % hour) / minute).toString().padStart(2, '0');
+                document.getElementById('seconds').innerText = Math.floor((gap % minute) / second).toString().padStart(2, '0');
+            };
+            setInterval(countdown, 1000);
+
+            const sections = document.querySelectorAll('.fade-in-section');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('is-visible'); });
+            }, { threshold: 0.1 });
+            sections.forEach(section => observer.observe(section));
+            
+            // La lógica del formulario se ha eliminado de aquí para permitir el envío estándar.
+
+            const musicModal = document.getElementById('music-modal'), playBtn = document.getElementById('play-music-btn'), noBtn = document.getElementById('no-music-btn'), audio = document.getElementById('background-music'), musicToggle = document.getElementById('music-toggle'), musicOnIcon = document.getElementById('music-on-icon'), musicOffIcon = document.getElementById('music-off-icon');
+            const handleMusicChoice = (play) => {
+                if(play) audio.play();
+                musicModal.style.opacity = '0';
+                setTimeout(() => musicModal.style.display = 'none', 500);
+                musicToggle.classList.remove('hidden');
+                musicOnIcon.classList.toggle('hidden', !play);
+                musicOffIcon.classList.toggle('hidden', play);
+            };
+            playBtn.addEventListener('click', () => handleMusicChoice(true));
+            noBtn.addEventListener('click', () => handleMusicChoice(false));
+            musicToggle.addEventListener('click', () => {
+                const isPaused = audio.paused;
+                isPaused ? audio.play() : audio.pause();
+                musicOnIcon.classList.toggle('hidden', !isPaused);
+                musicOffIcon.classList.toggle('hidden', isPaused);
+            });
+
+            const sparkleContainer = document.getElementById('sparkle-container');
+            for (let i = 0; i < 50; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.className = 'sparkle';
+                sparkle.style.left = `${Math.random() * 100}%`;
+                sparkle.style.top = `${Math.random() * 100}%`;
+                sparkle.style.animationDelay = `${Math.random() * 5}s`;
+                sparkle.style.animationDuration = `${2 + Math.random() * 3}s`;
+                sparkleContainer.appendChild(sparkle);
+            }
+        });
+    </script>
+</body>
+</html>
+
