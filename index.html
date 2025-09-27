@@ -58,7 +58,7 @@
             transition: opacity 1.5s ease-in-out;
         }
         .hero {
-            background-image: linear-gradient(135deg, rgba(106, 27, 69, 0.4), rgba(181, 101, 142, 0.4)), url('https://images.pexels.com/photos/158771/forest-trail-trees-moss-158771.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+            background-image: linear-gradient(135deg, rgba(255, 182, 193, 0.2), rgba(216, 191, 216, 0.3)), url('https://raw.githack.com/pentakillw/Invitacion/main/ai-generated-8602260_1280.jpg');
             background-size: cover;
             background-position: center;
             position: relative;
@@ -137,7 +137,7 @@
     
     <!-- CONTENIDO DE LA INVITACIÓN -->
     <div id="invitation-content">
-        <audio id="background-music" loop><source src="https://vgmsite.com/soundtracks/disney-s-sleeping-beauty/hlyycvrb/03-once-upon-a-dream.mp3" type="audio/mpeg"></audio>
+        <audio id="background-music" loop preload="auto"><source src="https://raw.githack.com/pentakillw/Invitacion/main/danse-des-princesses-307890.mp3" type="audio/mpeg"></audio>
         <div id="music-modal" class="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4 z-50"><div class="bg-white rounded-2xl p-8 text-center max-w-sm shadow-2xl"><h3 class="font-handwriting text-4xl theme-color mb-3">¡Bienvenido!</h3><p class="mb-6">¿Quieres acompañar esta invitación con una melodía mágica?</p><div class="flex justify-center space-x-4"><button id="play-music-btn" class="btn-magic text-white font-bold py-2 px-8 rounded-full">Sí</button><button id="no-music-btn" class="bg-gray-300 text-gray-700 font-bold py-2 px-8 rounded-full hover:bg-gray-400 transition">No</button></div></div></div>
         <button id="music-toggle" class="hidden fixed bottom-5 right-5 z-40 bg-white p-3 rounded-full shadow-lg"><svg id="music-on-icon" class="w-6 h-6 theme-color" fill="currentColor" viewBox="0 0 20 20"><path d="M18 3a1 1 0 00-1.447-.894L4 6.44V4a1 1 0 00-2 0v12a1 1 0 002 0v-2.44l12.553 3.346A1 1 0 0018 17V3zM4 8.23l12-3.2v9.94l-12-3.2V8.23z"/></svg><svg id="music-off-icon" class="w-6 h-6 text-gray-400 hidden" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM12.293 7.293a1 1 0 011.414 0L15 8.586l1.293-1.293a1 1 0 111.414 1.414L16.414 10l1.293 1.293a1 1 0 01-1.414 1.414L15 11.414l-1.293 1.293a1 1 0 01-1.414-1.414L13.586 10l-1.293-1.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg></button>
         
@@ -159,7 +159,8 @@
         <main class="container mx-auto px-6 py-16">
             <section class="fade-in-section mb-20 text-center">
                 <div class="max-w-4xl mx-auto">
-                    <img src="https://placehold.co/150x150/f7b7d8/ffffff?text=Y+%26+J" alt="Foto de los padres" class="mx-auto rounded-full mb-6 border-4 border-white shadow-lg">
+                    <!-- CAMBIO: Foto de los papás -->
+                    <img src="https://raw.githack.com/pentakillw/Invitacion/main/Foto%20de%20papas.jpeg" alt="Foto de los padres" class="mx-auto rounded-full mb-6 border-4 border-white shadow-lg w-36 h-36 object-cover">
                     <h2 class="font-handwriting text-5xl theme-color mb-4">Nuestro Cuento de Hadas</h2>
                     <h3 class="text-2xl font-semibold mb-4">Un Sueño Hecho Realidad</h3>
                     <p class="text-lg leading-relaxed">Con la bendición de las hadas buenas, nuestro más grande sueño se está haciendo realidad. Nos llena de alegría invitarte a celebrar la próxima llegada de nuestra amada princesa, Dayana Ambar.</p>
@@ -167,6 +168,21 @@
                 </div>
             </section>
             
+            <!-- NUEVA SECCIÓN: Galería de Ecografías -->
+            <section class="fade-in-section mb-20 text-center">
+                <div class="max-w-4xl mx-auto">
+                    <h2 class="font-handwriting text-5xl theme-color mb-4">Un Vistazo a Nuestra Princesa</h2>
+                    <p class="text-lg leading-relaxed mb-8">Queremos compartir con ustedes la primera sesión de fotos de Dayana Ambar.</p>
+                    <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+                        <div class="rounded-lg overflow-hidden shadow-lg transform hover:scale-105 transition-transform duration-300"><img src="https://raw.githack.com/pentakillw/Invitacion/main/Eco1.jpeg" alt="Ecografía 1" class="w-full h-full object-cover"></div>
+                        <div class="rounded-lg overflow-hidden shadow-lg transform hover:scale-105 transition-transform duration-300"><img src="https://raw.githack.com/pentakillw/Invitacion/main/Eco2.jpeg" alt="Ecografía 2" class="w-full h-full object-cover"></div>
+                        <div class="rounded-lg overflow-hidden shadow-lg transform hover:scale-105 transition-transform duration-300"><img src="https://raw.githack.com/pentakillw/Invitacion/main/Eco3.jpeg" alt="Ecografía 3" class="w-full h-full object-cover"></div>
+                        <div class="rounded-lg overflow-hidden shadow-lg transform hover:scale-105 transition-transform duration-300"><img src="https://raw.githack.com/pentakillw/Invitacion/main/Eco4.jpeg" alt="Ecografía 4" class="w-full h-full object-cover"></div>
+                        <div class="rounded-lg overflow-hidden shadow-lg transform hover:scale-105 transition-transform duration-300"><img src="https://raw.githack.com/pentakillw/Invitacion/main/Eco5.jpeg" alt="Ecografía 5" class="w-full h-full object-cover"></div>
+                    </div>
+                </div>
+            </section>
+
             <section class="fade-in-section card rounded-2xl p-8 md:p-12 mb-20 shadow-xl">
                 <div class="text-center mb-10"><h2 class="font-handwriting text-5xl theme-color mb-2">Itinerario Mágico</h2><p class="text-lg">El plan para un día inolvidable.</p></div>
                 <div class="max-w-2xl mx-auto timeline">
@@ -191,7 +207,7 @@
             
             <section class="fade-in-section text-center mb-20">
                 <h2 class="font-handwriting text-5xl theme-color mb-4">Dones de las Hadas</h2>
-                <p class="max-w-2xl mx-auto text-lg mb-8">Tu presencia es el mejor don. Si además deseas obsequiar algo a nuestra princesa, te compartimos que la mesa de regalos esta en amazon.</p>
+                <p class="max-w-2xl mx-auto text-lg mb-8">Tu presencia es el mejor don. Si además deseas obsequiar algo a nuestra princesa, aquí tienes una sugerencia.</p>
                 <div class="flex justify-center">
                     <a href="https://www.amazon.com.mx/baby-reg/yamileth-duarte-diciembre-2025-cuautitlan/11PY49YOLD6BO" target="_blank" class="btn-magic text-white font-bold py-3 px-8 rounded-full text-lg shadow-lg">Ver Mesa de Regalos</a>
                 </div>
@@ -200,7 +216,6 @@
             <!-- RSVP -->
             <section class="fade-in-section card rounded-2xl p-8 md:p-12 shadow-xl">
                 <div class="text-center mb-8"><h2 class="font-handwriting text-5xl theme-color mb-2">Confirma tu Asistencia</h2><p class="text-lg">El heraldo real espera tu respuesta antes del 15 de Octubre.</p></div>
-                <!-- Asegúrate de que esta URL sea la correcta de tu dashboard de Formspark -->
                 <form id="rsvpForm" action="https://submit-form.com/D2vQ5ZvyN" method="POST" class="max-w-xl mx-auto">
                     <div class="mb-4"><label for="name" class="block mb-2 font-semibold">Nombre del Invitado</label><input type="text" id="name" name="name" class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pink-400" required></div>
                     <div class="mb-6"><label class="block mb-2 font-semibold">¿Nos acompañarás?</label><div class="flex space-x-4"><label class="flex items-center"><input type="radio" name="attendance" value="Si, allí estaré" class="mr-2"> Sí, allí estaré</label><label class="flex items-center"><input type="radio" name="attendance" value="No podré asistir" class="mr-2"> No podré asistir</label></div></div>
@@ -218,7 +233,12 @@
             const envelope = document.getElementById('envelope');
             const envelopeContainer = document.getElementById('envelope-container');
             const invitationContent = document.getElementById('invitation-content');
+            const audio = document.getElementById('background-music');
+
             if (envelope.classList.contains('open')) return;
+            
+            audio.load();
+
             envelope.classList.add('open');
             setTimeout(() => {
                 envelopeContainer.style.opacity = '0';
@@ -254,22 +274,40 @@
             }, { threshold: 0.1 });
             sections.forEach(section => observer.observe(section));
             
-            // La lógica del formulario se ha eliminado de aquí para permitir el envío estándar.
+            const musicModal = document.getElementById('music-modal'), 
+                  playBtn = document.getElementById('play-music-btn'), 
+                  noBtn = document.getElementById('no-music-btn'), 
+                  audio = document.getElementById('background-music'), 
+                  musicToggle = document.getElementById('music-toggle'), 
+                  musicOnIcon = document.getElementById('music-on-icon'), 
+                  musicOffIcon = document.getElementById('music-off-icon');
 
-            const musicModal = document.getElementById('music-modal'), playBtn = document.getElementById('play-music-btn'), noBtn = document.getElementById('no-music-btn'), audio = document.getElementById('background-music'), musicToggle = document.getElementById('music-toggle'), musicOnIcon = document.getElementById('music-on-icon'), musicOffIcon = document.getElementById('music-off-icon');
             const handleMusicChoice = (play) => {
-                if(play) audio.play();
+                if (play) {
+                    const playPromise = audio.play();
+                    if (playPromise !== undefined) {
+                        playPromise.catch(error => {
+                            console.error("La reproducción automática fue bloqueada por el navegador.", error);
+                        });
+                    }
+                }
                 musicModal.style.opacity = '0';
                 setTimeout(() => musicModal.style.display = 'none', 500);
                 musicToggle.classList.remove('hidden');
                 musicOnIcon.classList.toggle('hidden', !play);
                 musicOffIcon.classList.toggle('hidden', play);
             };
+
             playBtn.addEventListener('click', () => handleMusicChoice(true));
             noBtn.addEventListener('click', () => handleMusicChoice(false));
+
             musicToggle.addEventListener('click', () => {
                 const isPaused = audio.paused;
-                isPaused ? audio.play() : audio.pause();
+                if (isPaused) {
+                    audio.play().catch(e => console.error("No se pudo reproducir el audio con el botón de control.", e));
+                } else {
+                    audio.pause();
+                }
                 musicOnIcon.classList.toggle('hidden', !isPaused);
                 musicOffIcon.classList.toggle('hidden', isPaused);
             });
@@ -288,4 +326,3 @@
     </script>
 </body>
 </html>
-
