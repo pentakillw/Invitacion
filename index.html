@@ -184,10 +184,9 @@
             <section class="fade-in-section card rounded-2xl p-8 md:p-12 mb-20 shadow-xl">
                 <div class="text-center mb-10"><h2 class="font-handwriting text-5xl theme-color mb-2">Itinerario Mágico</h2><p class="text-lg">El plan para un día inolvidable.</p></div>
                 <div class="max-w-2xl mx-auto timeline">
-                    <!-- CAMBIO: Itinerario actualizado -->
                     <div class="timeline-item"><p class="font-semibold text-lg flex items-center whitespace-nowrap"><svg class="w-5 h-5 inline-block mr-2 theme-color" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>02:00 PM - 02:30 PM</p><h3 class="text-xl font-bold theme-color-dark mt-1">Llegada al Castillo Encantado</h3><p>Los recibiremos con alegría para comenzar la celebración.</p></div>
                     <div class="timeline-item"><p class="font-semibold text-lg flex items-center whitespace-nowrap"><svg class="w-5 h-5 inline-block mr-2 theme-color" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>03:00 PM - 04:00 PM</p><h3 class="text-xl font-bold theme-color-dark mt-1">Banquete Real</h3><p>Disfrutaremos de una deliciosa comida digna de la realeza.</p></div>
-                    <div class="timeline-item"><p class="font-semibold text-lg flex items-center whitespace-nowrap"><svg class="w-5 h-5 inline-block mr-2 theme-color" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>04:30 PM - 07:00 PM</p><h3 class="text-xl font-bold theme-color-dark mt-1">Juegos y Diversión</h3><p>¡Prepárate para reír y disfrutar con un "Show Especial" lleno de actividades y sorpresas!</p></div>
+                    <div class="timeline-item"><p class="font-semibold text-lg flex items-center whitespace-nowrap"><svg class="w-5 h-5 inline-block mr-2 theme-color" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>04:30 PM - 07:00 PM</p><h3 class="text-xl font-bold theme-color-dark mt-1">Juegos y Diversión</h3><p>¡Prepárate para reír y disfrutar con actividades y sorpresas!</p></div>
                     <div class="timeline-item"><p class="font-semibold text-lg flex items-center whitespace-nowrap"><svg class="w-5 h-5 inline-block mr-2 theme-color" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>07:30 PM - 08:00 PM</p><h3 class="text-xl font-bold theme-color-dark mt-1">Apertura de Regalos</h3><p>Compartiremos la emoción de abrir los tesoros para nuestra princesa.</p></div>
                 </div>
             </section>
@@ -206,7 +205,6 @@
             
             <section class="fade-in-section text-center mb-20">
                 <h2 class="font-handwriting text-5xl theme-color mb-4">Dones de las Hadas</h2>
-                <!-- CAMBIO: Texto de la mesa de regalos actualizado -->
                 <p class="max-w-2xl mx-auto text-lg mb-8">Tu presencia es nuestro mejor regalo. Si además deseas obsequiar algo a nuestra princesa, puedes usar la mesa de regalos como referencia. Para quienes no puedan acompañarnos y deseen enviar un detalle, esta también es una opción con todo nuestro cariño.</p>
                 <div class="flex justify-center">
                     <a href="https://www.amazon.com.mx/baby-reg/yamileth-duarte-diciembre-2025-cuautitlan/11PY49YOLD6BO" target="_blank" class="btn-magic text-white font-bold py-3 px-8 rounded-full text-lg shadow-lg">Ver Mesa de Regalos</a>
@@ -215,12 +213,15 @@
 
             <!-- RSVP -->
             <section class="fade-in-section card rounded-2xl p-8 md:p-12 shadow-xl">
-                <div class="text-center mb-8"><h2 class="font-handwriting text-5xl theme-color mb-2">Confirma tu Asistencia</h2><p class="text-lg">El heraldo real espera tu respuesta antes del 15 de Octubre.</p></div>
-                <form id="rsvpForm" action="https://submit-form.com/D2vQ5ZvyN" method="POST" class="max-w-xl mx-auto">
-                    <div class="mb-4"><label for="name" class="block mb-2 font-semibold">Nombre del Invitado</label><input type="text" id="name" name="name" class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pink-400" required></div>
-                    <div class="mb-6"><label class="block mb-2 font-semibold">¿Nos acompañarás?</label><div class="flex space-x-4"><label class="flex items-center"><input type="radio" name="attendance" value="Si, allí estaré" class="mr-2"> Sí, allí estaré</label><label class="flex items-center"><input type="radio" name="attendance" value="No podré asistir" class="mr-2"> No podré asistir</label></div></div>
-                    <div class="text-center"><button type="submit" class="btn-magic text-white font-bold py-3 px-12 rounded-full text-lg">Enviar Confirmación</button></div>
-                </form>
+                <div id="rsvp-container">
+                    <div class="text-center mb-8"><h2 class="font-handwriting text-5xl theme-color mb-2">Confirma tu Asistencia</h2><p class="text-lg">El heraldo real espera tu respuesta antes del 15 de Octubre.</p></div>
+                    <!-- CAMBIO: Formulario con action y method directos -->
+                    <form id="rsvpForm" action="https://submit-form.com/D2vQ5ZvyN" method="POST" class="max-w-xl mx-auto">
+                        <div class="mb-4"><label for="name" class="block mb-2 font-semibold">Nombre del Invitado</label><input type="text" id="name" name="name" class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pink-400" required></div>
+                        <div class="mb-6"><label class="block mb-2 font-semibold">¿Nos acompañarás?</label><div class="flex space-x-4"><label class="flex items-center"><input type="radio" name="attendance" value="Si, allí estaré" class="mr-2" required> Sí, allí estaré</label><label class="flex items-center"><input type="radio" name="attendance" value="No podré asistir" class="mr-2"> No podré asistir</label></div></div>
+                        <div class="text-center"><button type="submit" class="btn-magic text-white font-bold py-3 px-12 rounded-full text-lg">Enviar Confirmación</button></div>
+                    </form>
+                </div>
             </section>
 
         </main>
@@ -253,7 +254,6 @@
 
         document.addEventListener('DOMContentLoaded', function() {
             const countdown = () => {
-                // CAMBIO: Hora del contador actualizada a las 14:00
                 const countDate = new Date('October 25, 2025 14:00:00').getTime();
                 const now = new Date().getTime();
                 const gap = countDate - now;
@@ -323,8 +323,16 @@
                 sparkle.style.animationDuration = `${2 + Math.random() * 3}s`;
                 sparkleContainer.appendChild(sparkle);
             }
+
+            // CAMBIO: Se eliminó el script del formulario para usar el método directo.
+
         });
     </script>
 </body>
 </html>
+
+
+
+
+
 
